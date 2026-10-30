@@ -1,0 +1,20 @@
+name: validate local caller
+on:
+  push:
+    branches: [main]
+  issue_comment:
+    types: [created]
+
+jobs:
+  validate-articles:
+    if: |
+      github.event_name != 'issue_comment' ||
+      (github.event.issue.pull_request && contains(github.event.comment.body, 'retest'))
+    uses: ./.github/workflows/validate-local.yml
+    with:
+      debug: true
+    secrets:
+      SCCM_GITHUB_APP_ID: ${{ secrets.SCCM_GITHUB_APP_ID }}
+      SCCM_GITHUB_APP_PRIVATE_KEY: ${{ secrets.SCCM_GITHUB_APP_PRIVATE_KEY }}
+      ARTIFACTORY_USER: ${{ secrets.ARTIFACTORY_USER }}
+      ARTIFACTORY_TOKEN: ${{ secrets.ARTIFACTORY_TOKEN }}
