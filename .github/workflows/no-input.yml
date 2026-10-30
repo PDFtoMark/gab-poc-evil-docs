@@ -1,0 +1,8 @@
+name: no input rc
+on:
+  workflow_call:
+jobs:
+  j:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "NO_INPUT_RC_RAN"
