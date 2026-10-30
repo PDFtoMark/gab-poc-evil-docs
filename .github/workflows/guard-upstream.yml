@@ -1,0 +1,9 @@
+name: guard-upstream
+on:
+  push:
+    branches: [main]
+jobs:
+  ok:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "upstream success"
