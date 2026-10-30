@@ -1,0 +1,21 @@
+name: validate-local
+on:
+  workflow_call:
+    inputs:
+      debug:
+        type: boolean
+        required: false
+    secrets:
+      SCCM_GITHUB_APP_ID:
+        required: false
+      SCCM_GITHUB_APP_PRIVATE_KEY:
+        required: false
+      ARTIFACTORY_USER:
+        required: false
+      ARTIFACTORY_TOKEN:
+        required: false
+jobs:
+  called:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "LOCAL_REUSABLE_EXECUTED debug=${{ inputs.debug }}"
