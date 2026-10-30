@@ -1,0 +1,9 @@
+name: no input caller
+on:
+  push:
+    branches: [main]
+jobs:
+  c:
+    uses: ./.github/workflows/no-input.yml
+    with:
+      debug: true
